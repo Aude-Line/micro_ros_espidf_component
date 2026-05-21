@@ -54,6 +54,7 @@ $(EXTENSIONS_DIR)/micro_ros_src/src:
 	else \
 		git clone -b ros2 https://github.com/eProsima/Micro-XRCE-DDS-Client src/Micro-XRCE-DDS-Client; \
 		git clone -b humble https://github.com/micro-ROS/rmw_microxrcedds src/rmw_microxrcedds; \
+		sed -i 's|(int32_t)((float)timeout.i32 / (float)available_contexts)|(int32_t)(timeout.i32 / (int32_t)available_contexts)|g' src/rmw_microxrcedds/rmw_microxrcedds_c/src/rmw_wait.c; \
 	fi; \
 	git clone -b ros2 https://github.com/eProsima/micro-CDR src/micro-CDR; \
 	git clone -b humble https://github.com/micro-ROS/rcl src/rcl; \
